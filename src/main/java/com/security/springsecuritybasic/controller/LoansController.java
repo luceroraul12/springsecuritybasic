@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("contact")
+@RequestMapping("loans")
 public class LoansController {
     @GetMapping
-    public String contact(){
-        return "this is a default message about contact.";
+    public String loans(){
+        return "this is a default message about loans.";
     }
 }
