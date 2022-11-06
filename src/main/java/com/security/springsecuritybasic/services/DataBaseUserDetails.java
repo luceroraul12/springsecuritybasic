@@ -1,7 +1,7 @@
 package com.security.springsecuritybasic.services;
 
 import com.security.springsecuritybasic.entities.Customer;
-import com.security.springsecuritybasic.entities.CustomerRepository;
+import com.security.springsecuritybasic.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,6 +34,6 @@ public class DataBaseUserDetails implements UserDetailsService {
             authorityList = new ArrayList<>();
             authorityList.add(new SimpleGrantedAuthority(customers.get(0).getRole()));
         }
-        return  new User(username, password, authorityList);
+        return  new User(userName, password, authorityList);
     }
 }
