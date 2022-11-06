@@ -1,5 +1,6 @@
-package com.security.springsecuritybasic.entities;
+package com.security.springsecuritybasic.repositories;
 
+import com.security.springsecuritybasic.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
