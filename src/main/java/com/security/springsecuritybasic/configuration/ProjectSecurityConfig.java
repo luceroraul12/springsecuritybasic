@@ -40,11 +40,13 @@ public class ProjectSecurityConfig {
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
 
-//    this is when I want to use database as a user containers (all time)
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource){
-        return new JdbcUserDetailsManager(dataSource);
-    }
+//    this is when I want to use database as a user containers but default
+//    @Bean
+//    public UserDetailsService userDetailsService(DataSource dataSource){
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
+
+//    this is when i want to use database as a user container and custom way
 
 
     @Bean
