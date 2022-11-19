@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,18 @@ public class LogginController {
     @Autowired
     CustomerRepository repository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostMapping("register")
     public ResponseEntity<String> registerUser(@RequestBody Customer customer){
         ResponseEntity<String> response =  null;
-        Customer userCreated = repository.save(customer);
         try{
+            //hash encrypt password
+            String hashPsw = passwordEncoder.encode(customer.getPsw());
+            customer.setPsw(hashPsw);
+
+            Customer userCreated = repository.save(customer);
 
             if (userCreated.getId() > 0) {
                 response = ResponseEntity
